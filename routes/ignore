@@ -1,0 +1,42 @@
+<?php
+
+use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\HomeController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+// Route::get('/', function () {
+//     if (!auth()->check()) {
+//         return view('auth.login');
+//     } 
+//     return redirect('/home');
+// });
+
+// Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+# Employee Management
+Route::group(['prefix' => 'employee_management', 'as' => 'employee_management.'], function () {
+    Route::apiResource('employee', EmployeeController::class);
+});
+
+# Company Management
+Route::group(['prefix' => 'company_management', 'as' => 'company_management.'], function () {
+    Route::apiResource('company', CompanyController::class);
+});
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
